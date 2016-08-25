@@ -7,3 +7,11 @@ set guifont=Monaco:h14
 set guicursor=n:blinkon0
 " Better line-height
 set linespace=8
+
+function! SQL2Tab()
+        %s#^|\s*##g
+        %s#\s*|\s*#\t#g
+        g/-----/d
+endfunction
+set syntax on
+set filetype plugin indent on

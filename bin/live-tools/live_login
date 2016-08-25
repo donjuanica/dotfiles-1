@@ -1,0 +1,40 @@
+#!/usr/bin/expect -f
+
+# Usage:
+# This script requires a mac (the Mac Keychain and the security unix command)
+# 
+# Examples:
+# ./live_login tdavies@upload1.sj2 # logs into mirror, switches to httpd
+# ./live_login tdavies@upload1.sj2 www469.sj2 # same as above, but also logs in to specific server
+
+proc usage {} {
+	global argv0
+	send_user "$argv0 user@host \[server\]\n"
+	exit
+}
+
+if {$argc < 1} usage
+
+set path [file dirname $argv0]
+set user_and_host [lindex $argv 0]
+set server [lindex $argv 1]; # optional arg
+source "$path/live-util.tcl"
+
+set live_password [get_mac_keychain_pass omniture-live]
+set password [get_mac_keychain_pass omniture-httpd-live]
+
+spawn_login "$user_and_host" "$live_password"
+#su httpd "$password"
+#send "set -o vi\r"
+send "\r"
+
+if [string length $server] {
+	send_login $server $password
+#	send "set -o vi\r"
+	send "\r"
+}
+
+interact {
+	"~~~" { send "$password\r" }
+}
+

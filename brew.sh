@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Get brew
+which brew
+if [[ $? != 0 ]] ; then
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
 # Install command-line tools using Homebrew.
 
 # Make sure we’re using the latest Homebrew.
@@ -101,6 +107,15 @@ brew install tree
 brew install vbindiff
 brew install webkit2png
 brew install zopfli
+
+# JonnyG specific
+brew install terminal-notifier
+brew install nvm
+brew cask install virtualbox
+brew cask install dropbox
+brew cask install iterm2
+brew cask install atom
+brew cask install google-chrome
 
 # Remove outdated versions from the cellar.
 brew cleanup

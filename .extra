@@ -1,0 +1,12 @@
+# Install live-tools here or make sure it's done somewhere else
+
+if [ -d "${HOME}/bin/live-tools/tools" ]; then
+	PATH=${HOME}/bin/live-tools/tools:${PATH}
+	alias dal='live_login jogale@upload1.da2.omniture.com'
+	alias lon='live_login jogale@upload1.lon5.omniture.com'
+	alias sin='live_login jogale@upload1.sin2.omniture.com'
+	alias oak='live_login jogale@upload1.oak1.omniture.com'
+	alias pnw='live_login jogale@upload1.pnw.omniture.com'
+	alias sbx='live_login jogale@upload.sbx1.omniture.com'
+	alias qe5='live_login jogale@mirror.qe5.ut1.omniture.com'
+fi

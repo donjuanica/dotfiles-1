@@ -5,14 +5,12 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias p="cd ~/Dropbox/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -54,7 +52,7 @@ alias week='date +%V'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -149,3 +147,15 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+
+#Git Aliases
+alias ereset="git fetch origin && git reset --hard origin/master"
+alias reupstream="git pull --rebase upstream master"
+alias upstream="git pull upstream master && npm install && npm update"
+alias gpush="git push origin master"
+command -v grunt && alias gcommit="grunt lint && git commit -a"
+command -v grunt && alias lint="grunt lint"
+alias glog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+
+# Set up SOCKS proxy
+command -v autossh && alias tunnel="autossh -M 0 -q -N -o 'ServerAliveInterval 60' -o 'ServerAliveCountMax 3' -D 1088 jogale@upload1.oak1.omniture.com"

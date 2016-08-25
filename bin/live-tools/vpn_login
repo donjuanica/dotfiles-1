@@ -1,0 +1,32 @@
+#!/usr/bin/expect -f
+
+set path [file dirname $argv0]
+set dest [lindex $argv 0]
+set server [lindex $argv 1]; # optional arg
+source "$path/live-util.tcl"
+
+set password [get_mac_keychain_pass omniture-httpd-live]
+set live_password [get_mac_keychain_pass omniture-live]
+
+#login to dev
+
+send_user "Logging into httpd@www7.dev.corp.omniture.com..."
+spawn_login httpd@www7.dev.corp.omniture.com ""
+send_user "OK\n"
+send "iam tdavies\n"
+expect -re $prompt
+# login to main account
+send_user "Logging into $dest..."
+send_login "$dest" "$live_password" 
+send_user "OK\n"
+su httpd $password
+send "set -o vi\n"
+
+if [string length $server] {
+	send_login $server $live_password
+	send "set -o vi\r"
+}
+
+interact {
+	"~~~" { send "$password\r" }
+}
