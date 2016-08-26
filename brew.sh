@@ -109,8 +109,14 @@ brew install webkit2png
 brew install zopfli
 
 # JonnyG specific
+brew install brew-cask
 brew install terminal-notifier
 brew install nvm
+brew install autossh
+brew install docker
+brew install gnupg
+brew install ant
+brew install maven
 brew cask install virtualbox
 brew cask install dropbox
 brew cask install iterm2

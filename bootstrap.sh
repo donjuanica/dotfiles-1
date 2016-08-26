@@ -13,6 +13,15 @@ function doIt() {
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
+
+	# Run brew.sh
+	source $HOME/brew.sh
+
+	# Install node
+	nvm install node
+
+	source ~/.node
+	terminal-notifier -message "Install completed" -title "Success"
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

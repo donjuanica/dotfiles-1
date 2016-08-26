@@ -1,5 +1,14 @@
 # Install live-tools here or make sure it's done somewhere else
 
+# Git credentials
+GIT_AUTHOR_NAME="Jon Gale"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+git config --global user.name "$GIT_AUTHOR_NAME"
+GIT_AUTHOR_EMAIL="jogale@adobe.com"
+GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
+
+
 if [ -d "${HOME}/bin/live-tools/tools" ]; then
 	PATH=${HOME}/bin/live-tools/tools:${PATH}
 	alias dal='live_login jogale@upload1.da2.omniture.com'
