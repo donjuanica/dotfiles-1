@@ -21,6 +21,10 @@ function doIt() {
 	nvm install node
 
 	source ~/.node
+
+	# Update software
+	update
+
 	terminal-notifier -message "Install completed" -title "Success"
 }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Get brew
-which brew
+# Get brew 🍺
+which brew >/dev/null
 if [[ $? != 0 ]] ; then
 	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
